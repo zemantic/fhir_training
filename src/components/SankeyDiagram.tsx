@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import * as d3 from "d3";
-import { sankey } from "d3-sankey";
+import { sankey, sankeyLinkHorizontal } from "d3-sankey";
 
 interface SankeyNode {
   id: string;
@@ -198,6 +198,48 @@ const SankeyDiagram: React.FC = () => {
       hl7v3: "#7C2D12", // Brown - for administrative
     };
     const valueSetColor = "#10B981"; // Green
+
+    g.append("g")
+      .selectAll(".link")
+      .data(sankeyData.links)
+      .enter()
+      .append("path")
+      .attr("class", "link")
+      .attr("d", sankeyLinkHorizontal())
+      .attr("stroke", (d: any) => codeSystemColors[d.source.id] || "#6B7280")
+      .attr("stroke-opacity", 0.4)
+      .attr("stroke-width", (d: any) => Math.max(1, d.width))
+      .attr("fill", "none")
+      .on("mouseover", function (event, d: any) {
+        d3.select(this).attr("stroke-opacity", 0.8);
+
+        // Show tooltip
+        const tooltip = d3
+          .select("body")
+          .append("div")
+          .attr("class", "tooltip")
+          .style("opacity", 0)
+          .style("position", "absolute")
+          .style("background", "rgba(0, 0, 0, 0.8)")
+          .style("color", "white")
+          .style("padding", "8px 12px")
+          .style("border-radius", "4px")
+          .style("font-size", "12px")
+          .style("pointer-events", "none")
+          .style("z-index", "1000");
+
+        tooltip.transition().duration(200).style("opacity", 1);
+        tooltip
+          .html(
+            `${d.source.name} → ${d.target.name}<br/>Flow: ${d.value} connections`
+          )
+          .style("left", event.pageX + 10 + "px")
+          .style("top", event.pageY - 28 + "px");
+      })
+      .on("mouseout", function () {
+        d3.select(this).attr("stroke-opacity", 0.4);
+        d3.selectAll(".tooltip").remove();
+      });
 
     // Draw nodes
     const nodes = g
