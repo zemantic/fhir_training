@@ -125,25 +125,6 @@ const BindingStrengthAnimation: React.FC = () => {
           </p>
         </div>
 
-        {/* Animation Controls */}
-        <div className="flex justify-center space-x-4 mb-8">
-          <button
-            onClick={handlePlayPause}
-            className="flex items-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-          >
-            {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
-            <span>{isPlaying ? 'Pause' : 'Play'}</span>
-          </button>
-
-          <button
-            onClick={handleReset}
-            className="flex items-center space-x-2 px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors"
-          >
-            <RotateCcw className="w-4 h-4" />
-            <span>Reset</span>
-          </button>
-        </div>
-
         {/* Binding Level Selector */}
         <div className="flex justify-center space-x-2 mb-8">
           {bindingLevels.map((binding, index) => (
