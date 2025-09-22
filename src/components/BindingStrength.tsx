@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Play, Pause, RotateCcw, CheckCircle, XCircle, AlertCircle, Info } from 'lucide-react';
+import {CheckCircle, XCircle, AlertCircle, Info } from 'lucide-react';
 
 interface BindingLevel {
   id: string;
@@ -82,7 +82,7 @@ const bindingLevels: BindingLevel[] = [
 
 const BindingStrengthAnimation: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying] = useState(false);
   const [animationKey, setAnimationKey] = useState(0);
 
   useEffect(() => {
