@@ -98,15 +98,6 @@ const BindingStrengthAnimation: React.FC = () => {
 
   const currentBinding = bindingLevels[currentIndex];
 
-  const handlePlayPause = () => {
-    setIsPlaying(!isPlaying);
-  };
-
-  const handleReset = () => {
-    setCurrentIndex(0);
-    setAnimationKey(prev => prev + 1);
-  };
-
   const handleBindingSelect = (index: number) => {
     setCurrentIndex(index);
     setAnimationKey(prev => prev + 1);
