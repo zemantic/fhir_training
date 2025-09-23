@@ -39,6 +39,17 @@ const Navigation: React.FC = () => {
               <Zap className="w-4 h-4" />
               <span>Binding Strength</span>
             </Link>
+
+            <Link to="/cardinality"
+              className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 flex items-center space-x-2 ${
+                currentPage === 'puzzle'
+                  ? 'bg-blue-100 text-blue-700 shadow-sm'
+                  : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+              }`}
+            >
+              <span className="font-mono text-sm">🧩</span>
+              <span>Cardinality</span>
+            </Link>
           </div>
         </div>
       </div>

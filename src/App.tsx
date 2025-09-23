@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Navigation from './components/Navigation';
 import SankeyPage from './pages/sankey';
 import BindingPage from './components/BindingStrength';
+import CardinalityPage from './components/Cardinality';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Routes>
           <Route path="/sankey" element={<SankeyPage />} />
           <Route path="/binding" element={<BindingPage />} />
+          <Route path="/cardinality" element={<CardinalityPage />}></Route>
           <Route path="/" element={<Navigate to="/sankey" replace />} />
         </Routes>
       </div>
